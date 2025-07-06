@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SWM | Medical Education’s Handbook</title>
+  <style>
+    :root {
+      --primary: #2b5dff;
+      --accent: #4da6ff;
+      --light-bg: #f5faff;
+      --text-dark: #1a1a1a;
+      --text-light: #ffffff;
+      --warning: #ff4d4d;
+      --note-bg: #e6f0ff;
+      --rule-bg: #fef6e4;
+      --font-main: 'Georgia', serif;
+      --font-sans: 'Inter', 'Lato', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: var(--text-light);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: var(--font-main);
+    }
+
+    header h2 {
+      font-weight: 400;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    nav {
+      width: 250px;
+      background-color: var(--accent);
+      padding: 2rem 1rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    nav h3 {
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav li {
+      margin-bottom: 1rem;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      border-left: 6px solid var(--primary);
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      color: var(--primary);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .callout {
+      border-left: 5px solid var(--accent);
+      background: var(--note-bg);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 6px;
+    }
+
+    .warning {
+      background: #fff0f0;
+      border-left-color: var(--warning);
+      color: #900;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid var(--accent);
+      margin: 3rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #e0ecff;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .dark-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      main {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h3>📘 Table of Contents</h3>
+    <ul>
+      <li><a href="#section1">🩺 Introduction to MEDU</a></li>
+      <li><a href="#section2">⚕️ Department Rules & Requirements</a></li>
+      <li><a href="#section3">📋 Communication Guidelines</a></li>
+      <li><a href="#section4">🧠 Training Curriculum</a></li>
+      <li><a href="#section5">📅 Promotion System</a></li>
+      <li><a href="#section6">🎓 Graduation & Certification</a></li>
+      <li><a href="#section7">⚠️ Strike & Suspension Policies</a></li>
+      <li><a href="#section8">👩‍🏫 Mentorship Program</a></li>
+      <li><a href="#section9">🗂️ Document Handling</a></li>
+      <li><a href="#section10">📢 Event Participation</a></li>
+      <li><a href="#section11">💼 Medical Education Internship</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header>
+      <h1>SWM | Medical Education’s Handbook</h1>
+      <h2>📘 Medical Education Division</h2>
+      <p>By Luna.C.Everly – Medical Education Overseer</p>
+    </header>
+
+    <div class="dark-toggle">🌓 Mode</div>
+
+    <section id="section1">
+      <h2>🩺 Section 1: Introduction to MEDU</h2>
+      <p>Welcome to the Medical Education Department (MEDU) of the SWM Network. Our mission is to train, support, and elevate future medical leaders within the community.</p>
+    </section>
+
+    <hr>
+
+    <section id="section2">
+      <h2>⚕️ Section 2: Department Rules & Requirements</h2>
+      <div class="callout">
+        <strong>Reminder:</strong> Members must adhere to all SWM general rules and maintain professionalism at all times.
+      </div>
+      <ul>
+        <li>Be active during sessions and evaluations.</li>
+        <li>Show respect toward superiors, trainees, and colleagues.</li>
+        <li>Report any misconduct to the MEDU Overseer or higher authorities.</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section id="section3">
+      <h2>📋 Section 3: Communication Guidelines</h2>
+      <p>Use clear and respectful communication. Avoid spamming, and always maintain a professional tone in all MEDU-related chats and documents.</p>
+    </section>
+
+    <hr>
+
+    <section id="section4">
+      <h2>🧠 Section 4: Training Curriculum</h2>
+      <p>The curriculum includes theoretical sessions, practical simulations, and peer discussions. Members are expected to attend at least 75% of the sessions.</p>
+    </section>
+
+    <hr>
+
+    <section id="section5">
+      <h2>📅 Section 5: Promotion System</h2>
+      <p>Promotions within MEDU are based on merit, attendance, test scores, and observed professionalism.</p>
+    </section>
+
+    <hr>
+
+    <section id="section6">
+      <h2>🎓 Section 6: Graduation & Certification</h2>
+      <p>Upon successful completion of the program, members will receive a MEDU Certificate and will be eligible for MEDU Graduate roles.</p>
+    </section>
+
+    <hr>
+
+    <section id="section7">
+      <h2>⚠️ Section 7: Strike & Suspension Policies</h2>
+      <div class="callout warning">
+        <strong>⚠️ Warning:</strong> Accumulating 3 strikes will result in removal from the department.
+      </div>
+      <ul>
+        <li>1st Strike: Verbal warning and record log.</li>
+        <li>2nd Strike: Temporary suspension and retraining.</li>
+        <li>3rd Strike: Removal and report to SWM Command.</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section id="section8">
+      <h2>👩‍🏫 Section 8: Mentorship Program</h2>
+      <p>MEDU offers a one-on-one mentorship system to help trainees grow and learn in a safe and supportive environment.</p>
+    </section>
+
+    <hr>
+
+    <section id="section9">
+      <h2>🗂️ Section 9: Document Handling</h2>
+      <p>Ensure all educational material is uploaded on time and follows formatting standards. Use Google Docs or SWM-approved platforms.</p>
+    </section>
+
+    <hr>
+
+    <section id="section10">
+      <h2>📢 Section 10: Event Participation</h2>
+      <p>All MEDU members are encouraged to join educational events, workshops, and simulations hosted within or outside SWM.</p>
+    </section>
+
+    <hr>
+
+    <section id="section11">
+      <h2>💼 Section 11: Medical Education Internship</h2>
+      <p>Internships are available for advanced trainees. Requirements include: at least 2 months of participation and recommendation from a mentor.</p>
+    </section>
+  </main>
+
+  <footer>
+    This handbook was built for the MEDU Department | SWM Network
+  </footer>
+
+</body>
+</html>
