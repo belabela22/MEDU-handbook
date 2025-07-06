@@ -1,326 +1,522 @@
-Here is a smooth, animated, detailed, and elegant HTML/CSS version of the SWM | Medical Education Department (MEDU) Handbook, with longer section texts, scroll animations, and an improved UI/UX:
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SWM | Medical Education’s Handbook</title>
-  <style>
-    :root {
-      --primary: #337ccf;
-      --secondary: #75b5ff;
-      --light-bg: #f4faff;
-      --text-dark: #1e1e2f;
-      --text-light: #ffffff;
-      --rule: #fff2cc;
-      --warn: #ffe5e5;
-      --note: #e7f2fd;
-      --font-body: 'Inter', sans-serif;
-      --transition: all 0.3s ease-in-out;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SWM | Medical Education’s Handbook</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Georgia&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  :root {
+    --primary: #2c74d9;
+    --primary-light: #aac9f9;
+    --primary-dark: #1a4d8f;
+    --accent: #4a90e2;
+    --light-bg: #f9fbfe;
+    --dark-bg: #e3f0ff;
+    --text-dark: #222;
+    --text-light: #555;
+    --border-color: #d0d9f7;
+    --shadow: rgba(44, 116, 217, 0.3);
+    --warning-bg: #ffdddd;
+    --warning-border: #e04e4e;
+    --callout-bg: #dbe7ff;
+  }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-      display: flex;
-      font-family: var(--font-body);
-      background: var(--light-bg);
-      color: var(--text-dark);
-    }
+  body {
+    margin: 0;
+    font-family: 'Inter', 'Georgia', serif;
+    background: var(--light-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
 
-    /* Sidebar Navigation */
-    nav {
-      width: 270px;
-      background: var(--primary);
-      color: var(--text-light);
-      padding: 2rem 1rem;
-      position: fixed;
-      height: 100vh;
-      overflow-y: auto;
-      top: 0;
-      left: 0;
-      transition: var(--transition);
-    }
+  header {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
 
-    nav h2 {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
+  header h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
 
-    nav ul {
-      list-style: none;
-    }
+  header p {
+    margin: 0.2rem 0 0;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
 
-    nav li {
-      margin-bottom: 1rem;
-    }
+  .container {
+    display: flex;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    gap: 2rem;
+  }
 
-    nav a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-weight: 500;
-      display: block;
-      padding: 0.6rem 1rem;
-      border-radius: 6px;
-      transition: var(--transition);
-    }
+  nav {
+    flex: 0 0 280px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px var(--shadow);
+    padding: 1rem 1.5rem;
+    height: fit-content;
+    position: sticky;
+    top: 80px;
+  }
 
-    nav a:hover {
-      background: var(--secondary);
-    }
+  nav h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
-    main {
-      margin-left: 270px;
-      padding: 2rem;
-      max-width: 1000px;
-      width: 100%;
-    }
+  nav h2 span {
+    font-size: 1.4rem;
+  }
 
-    header {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      padding: 2rem 1rem;
-      border-radius: 12px;
-      color: var(--text-light);
-      margin-bottom: 2rem;
-      text-align: center;
-      animation: fadeIn 1s ease;
-    }
+  nav ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
 
-    header h1 {
-      font-size: 2rem;
-    }
+  nav ul li {
+    margin-bottom: 0.7rem;
+  }
 
-    header p {
-      font-style: italic;
-      margin-top: 0.5rem;
-    }
+  nav ul li a {
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover,
+  nav ul li a:focus {
+    color: var(--accent);
+    outline: none;
+  }
 
-    section {
-      margin-bottom: 3rem;
-      background: #ffffff;
-      padding: 1.5rem 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: var(--transition);
-    }
+  main {
+    flex: 1 1 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px var(--shadow);
+    padding: 2rem 2.5rem;
+  }
 
-    section.visible {
+  main h2 {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.7rem;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    scroll-margin-top: 90px;
+  }
+
+  main h3 {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-top: 1.6rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  p, ul {
+    color: var(--text-light);
+    font-size: 1rem;
+  }
+
+  ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  ul ul li {
+    list-style-type: circle;
+    margin-left: 1rem;
+  }
+
+  .callout {
+    background: var(--callout-bg);
+    border-left: 5px solid var(--primary);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    border-radius: 6px;
+    font-style: italic;
+    color: var(--primary-dark);
+    box-shadow: inset 0 0 8px var(--primary-light);
+  }
+
+  .warning {
+    background: var(--warning-bg);
+    border-left: 5px solid var(--warning-border);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--warning-border);
+  }
+
+  hr {
+    border: none;
+    border-top: 1.5px solid var(--border-color);
+    margin: 2.5rem 0;
+  }
+
+  footer {
+    background: var(--primary-dark);
+    color: white;
+    text-align: center;
+    padding: 1rem 1rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  /* Smooth fade in animation for sections */
+  section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s forwards;
+  }
+
+  section:nth-child(odd) {
+    animation-delay: 0.2s;
+  }
+  section:nth-child(even) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes fadeInUp {
+    to {
       opacity: 1;
       transform: translateY(0);
     }
+  }
 
-    section h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
+  /* Responsive */
+  @media (max-width: 991px) {
+    .container {
+      flex-direction: column;
+      margin: 1rem;
+      padding: 0;
+    }
+    nav {
+      position: relative;
+      top: auto;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0 0.5rem;
+      background: transparent;
+    }
+    nav h2 {
       color: var(--primary);
+      font-weight: 700;
     }
-
-    section p, section ul {
-      line-height: 1.7;
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
+    nav ul li a {
+      font-size: 1.1rem;
+      font-weight: 600;
     }
-
-    ul {
-      padding-left: 1.5rem;
+    main {
+      box-shadow: none;
+      border-radius: 0;
+      padding: 1rem 0.5rem;
     }
-
-    .callout {
-      background: var(--note);
-      border-left: 5px solid var(--primary);
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-
-    .warning {
-      background: var(--warn);
-      border-left: 5px solid crimson;
-      color: #8b0000;
-    }
-
-    .rule-box {
-      background: var(--rule);
-      border-left: 5px solid goldenrod;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 8px;
-    }
-
-    footer {
-      margin-top: 4rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        position: relative;
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      nav a {
-        margin: 0.2rem;
-        padding: 0.5rem;
-      }
-
-      main {
-        margin-left: 0;
-        padding: 1.2rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
+<header>
+  <h1>SWM | Medical Education’s Handbook</h1>
+  <p>By: Luna.C.Everly ~ Medical Education Overseers 📘 Medical Education Division</p>
+</header>
 
-<nav>
-  <h2>📘 MEDU Handbook</h2>
-  <ul>
-    <li><a href="#intro">🩺 Introduction</a></li>
-    <li><a href="#rules">⚕️ Rules & Requirements</a></li>
-    <li><a href="#comms">📋 Communication</a></li>
-    <li><a href="#curriculum">🧠 Curriculum</a></li>
-    <li><a href="#promotion">📅 Promotions</a></li>
-    <li><a href="#grad">🎓 Graduation</a></li>
-    <li><a href="#strike">⚠️ Strike Policy</a></li>
-    <li><a href="#mentor">👩‍🏫 Mentorship</a></li>
-    <li><a href="#docs">🗂️ Documents</a></li>
-    <li><a href="#events">📢 Events</a></li>
-    <li><a href="#internship">💼 Internship</a></li>
-  </ul>
-</nav>
-
-<main>
-  <header>
-    <h1>SWM | Medical Education’s Handbook</h1>
-    <p>By Luna.C.Everly – Medical Education Overseer</p>
-  </header>
-
-  <section id="intro">
-    <h2>🩺 Introduction to MEDU</h2>
-    <p>Welcome to the SWM Medical Education Department (MEDU). As a vital part of the SWM Network, our department is committed to educating, training, and developing future healthcare leaders. We believe in excellence, empathy, and innovation in everything we teach.</p>
-    <p>This handbook serves as your comprehensive guide, outlining responsibilities, expectations, training curriculum, and advancement pathways.</p>
-  </section>
-
-  <section id="rules">
-    <h2>⚕️ Department Rules & Requirements</h2>
-    <div class="rule-box">
-      <strong>Key Requirements:</strong>
-      <ul>
-        <li>Maintain at least 70% attendance in all MEDU sessions.</li>
-        <li>Actively participate in theoretical and practical modules.</li>
-        <li>Communicate respectfully and follow the chain of command.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="comms">
-    <h2>📋 Communication Guidelines</h2>
-    <p>Effective and respectful communication is expected at all times. Use appropriate channels (e.g., #medu-questions, DMs for mentor contact) and avoid spamming or off-topic discussions during lectures or evaluations.</p>
-  </section>
-
-  <section id="curriculum">
-    <h2>🧠 Training Curriculum</h2>
-    <p>The curriculum is divided into:</p>
+<div class="container">
+  <nav aria-label="Table of Contents Navigation">
+    <h2>📋 Table of Contents</h2>
     <ul>
-      <li><strong>Foundational Modules:</strong> Anatomy, Medical Ethics, Patient Interaction.</li>
-      <li><strong>Clinical Modules:</strong> Emergency Response, Triage, Diagnostics.</li>
-      <li><strong>Advanced Simulations:</strong> Real-time scenarios, ICU simulations, Field Med Evacs.</li>
+      <li><a href="#section1">Section 1: Introduction to MEDU</a></li>
+      <li><a href="#section2">Section 2: Department Rules & Requirements</a></li>
+      <li><a href="#section3">Section 3: Department Strikes & Guidelines</a></li>
+      <li><a href="#section4">Section 4: Department Positions & Roles</a></li>
+      <li><a href="#section5">Section 5: Weekly Task Quota</a></li>
+      <li><a href="#section6">Section 6: Monthly Task Quota</a></li>
+      <li><a href="#section7">Section 7: Shifts & Activity</a></li>
+      <li><a href="#section8">Section 8: Tutoring Support & Education</a></li>
+      <li><a href="#section9">Section 9: Training blueprints and guide regulations</a></li>
+      <li><a href="#section10">Section 10: Ticket Etiquette and Rules</a></li>
+      <li><a href="#section11">Section 11: Medical Education Internship</a></li>
     </ul>
-    <div class="callout">
-      📌 <strong>Tip:</strong> Always keep notes from live trainings—they may appear in your evaluations.
-    </div>
-  </section>
+  </nav>
 
-  <section id="promotion">
-    <h2>📅 Promotion System</h2>
-    <p>Promotions are based on performance, evaluation scores, leadership, and contribution. To move up:</p>
-    <ul>
-      <li>Maintain consistent attendance.</li>
-      <li>Pass all evaluations with at least 80% accuracy.</li>
-      <li>Demonstrate initiative during simulations.</li>
-    </ul>
-  </section>
-
-  <section id="grad">
-    <h2>🎓 Graduation & Certification</h2>
-    <p>Graduates who complete all core modules and pass final assessments will be awarded a MEDU Certificate. This grants eligibility for leadership positions and mentorship roles.</p>
-  </section>
-
-  <section id="strike">
-    <h2>⚠️ Strike & Suspension Policy</h2>
-    <div class="warning">
-      <strong>⚠️ 3-Strikes Rule:</strong>
+  <main>
+    <section id="section1" tabindex="0">
+      <h2>🩺 Section 1: Introduction to MEDU</h2>
+      <p>All new members, welcome to Medical Education! It is such a joy as Overseers, to have so many willing and dedicated members who want to continue to develop this program. It truly is an honor to work with each and every one of you. This new chapter is leading to your future career in Medical Education, here at SWM. Now, down below you will see the following questions you may or may not have about our department.</p>
+      <hr />
+      <h3>What does MEDU refer to?</h3>
+      <p>Our Medical Education department handles tutoring the community and the educational operations of SWM. The department provides training’s, guides, tutoring, board preparation, & more. This means that our department refers to the knowledge, experience, skills, & commitment of learners itself.</p>
+      <h3>What is MEDU responsible for?</h3>
+      <p>This prestigious department is responsible for the management of staff/students of Southwest Medicine, along with tutoring, Medical Education is responsible for providing a trained and qualified workforce to SWM, providing high quality to the patient. This department is responsible for tutoring, guides, board preparation, etc.</p>
+      <h3>What does MEDU do?</h3>
+      <p>Below you can review some main functions of our Medical Education duties.</p>
       <ul>
-        <li><strong>1st Strike:</strong> Warning issued.</li>
-        <li><strong>2nd Strike:</strong> Temporary suspension & retraining.</li>
-        <li><strong>3rd Strike:</strong> Expulsion from the MEDU program.</li>
+        <li>➜ Tutoring Tickets</li>
+        <li>➜ Guides</li>
+        <li>➜ Educational Poster’s</li>
+        <li>➜ Trainings</li>
+        <li>➜ Analysis of SWM Employees</li>
+        <li>➜ Obtaining feedback from players, board exams, and other sub-departments</li>
+        <li>➜ Overseeing and recommending excelling medical staff members to recognize</li>
       </ul>
-    </div>
-  </section>
+      <p>By being a Medical Educator, you will work to provide a positive role play experience, while further developing skills and knowledge into Southwest Medicine as a whole.</p>
+    </section>
 
-  <section id="mentor">
-    <h2>👩‍🏫 Mentorship Program</h2>
-    <p>Our mentorship initiative pairs new trainees with seasoned MEDU graduates. This one-on-one system allows for tailored learning and guidance throughout your journey.</p>
-  </section>
+    <section id="section2" tabindex="0">
+      <h2>⚕️ Section 2: Department Rules & Requirements</h2>
+      <p>As an MEDU member, you should keep in mind that you are already part of a very important internal team at SWM, and you are responsible for carrying out various tasks daily, but this document will outline for you what you are not allowed to do.</p>
+      <hr />
+      <h3>Artl. H1. “Respectful”</h3>
+      <p>The respect for your colleagues provides a good and pleasant experience on the server, insults, rudeness, racism, uncomfortable comments, homophobia, intuitions of disrespect, and personal questions are not allowed to those below or above your current MEDU rank.</p>
 
-  <section id="docs">
-    <h2>🗂️ Document Handling</h2>
-    <p>Members are expected to manage documentation professionally. This includes proper formatting, citation, and timely submission of required forms and reports.</p>
-  </section>
+      <h3>Artl. H2. “Conspiracy”</h3>
+      <p>Soliciting privileged information from MEDU and/or higher ranks such as confidential chats, screenshots, messages or confidential topics is prohibited and is considered a conspiracy.</p>
 
-  <section id="events">
-    <h2>📢 Event Participation</h2>
-    <p>Attend special events like medical drills, Q&A panels, and guest lectures. Your attendance boosts your visibility and networking within the SWM Network.</p>
-  </section>
+      <h3>Artl. H4. “Co-conspiracy”</h3>
+      <p>Giving confidential information to members outside of the MEDU department is prohibited, this includes photos, messages, screenshots, chats, ideas, innuendos, and confidential matters. This is considered knowingly complicit in a conspiracy with the other member.</p>
 
-  <section id="internship">
-    <h2>💼 Medical Education Internship</h2>
-    <p>Internships are offered to top-performing members. These roles involve co-hosting sessions, preparing materials, and evaluating peers under supervision.</p>
-  </section>
+      <h3>Artl. H5. “N.D.A Form”</h3>
+      <p>You must sign and respect the Non-Disclosure Agreement Form and give respect to it, respecting the confidentiality of this department and keeping all department information private.</p>
 
-  <footer>
-    This handbook was built for the MEDU Department | SWM Network
-  </footer>
-</main>
+      <h3>Artl. H6. “Activity”</h3>
+      <p>As a member of Medical Education, you are asked to be active in the department, contributing and assisting other members with tasks and duties as assigned.</p>
 
-<script>
-  // Smooth fade-in on scroll
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+      <h3>Artl. H7. “Consequences”</h3>
+      <p>Failure or violation of any regulation/article will result in an immediate termination of the department, along with a department blacklist to the person.</p>
 
-  document.querySelectorAll('section').forEach(sec => {
-    observer.observe(sec);
-  });
-</script>
+      <h3>Artl. H8. “Meetings”</h3>
+      <p>Failure to meet the “Weekly Task Quota” and/or “Monthly Task Quota” one time will result in a verbal warning.</p>
 
+      <h3>Artl. H9. “Competency”</h3>
+      <p>Failure to be medically accurate is prohibited in this department. (I understand most of us are not real medical professionals, so this is flexible to an extent).</p>
+
+      <h3>Artl. H10. “Hinting”</h3>
+      <p>Hinting for a promotion is strictly prohibited. If a member gets seen doing this, they could get a warning or a strike.</p>
+
+      <h3>Artl. H11. “Incomplete Tasks”</h3>
+      <p>If a member does not complete their tasks, punishments will be given out. It is the persons’ responsibility to do their tasks.</p>
+
+      <div class="warning">
+        <strong>DEPARTMENT STRIKES</strong><br />
+        1st Department Strike = Department Warning<br />
+        2nd Department Strike = Demotion from the current MEDU rank<br />
+        3rd Department Strike = Termination from the Internal Department<br /><br />
+        1st Failure of meeting W.Q/M.Q = Department Verbal Warning<br />
+        2nd Failure of meeting W.Q/M.Q = Demotion from the current HR rank along with a Strike<br />
+        3rd Failure of meeting W.Q/M.Q = Termination from the internal department along with a department blacklist.
+      </div>
+    </section>
+
+    <section id="section3" tabindex="0">
+      <h2>📘 Section 3: Department Strikes & Guidelines</h2>
+      <p>See the strike policy detailed in the previous section's warning box. It is critical to follow all rules and requirements to avoid strikes and potential termination.</p>
+    </section>
+
+    <section id="section4" tabindex="0">
+      <h2>⚠️ Section 4: Department Positions & Roles</h2>
+      <p>In order to maintain efficiency, our department positions will rely on a hierarchy based on which division you enter.</p>
+
+      <h3>Executive Positions</h3>
+      <ul>
+        <li>Medical Education Overseer</li>
+        <li>Executive Assistant</li>
+        <li>Medical Education Developments</li>
+        <li>Medical Education Coordinator</li>
+      </ul>
+
+      <h3>Supervision Roles</h3>
+      <ul>
+        <li>Medical Operations Supervisor</li>
+        <li>Medical Education Manager</li>
+      </ul>
+
+      <h3>Support/Intern Roles</h3>
+      <ul>
+        <li>Medical Educator</li>
+        <li>Intern Medical Educator</li>
+      </ul>
+
+      <h3>Department Position Guide</h3>
+      <p><strong>Medical Education Developments</strong><br />
+      The development role will attain feedback and suggestions from staff members and admins. They will work to assess and innovate new developments that could benefit the academic standing of Southwest Medicine.</p>
+
+      <p><strong>Medical Education Coordinator</strong><br />
+      This executive role will aim to manage the internal staff within the Medical Education Department. They will coordinate the calendar, avoid conflicts, and work with developments to create the most efficient system possible.</p>
+
+      <p><strong>Medical Operations Supervisor</strong><br />
+      The Medical Operations supervisor will overview SWM’s medical staff by supervising cases and noting down common mistakes they see. They will be working with our HR department by recommending staff who should be rewarded or disciplined.</p>
+
+      <p><strong>Medical Education Manager</strong><br />
+      The Medical Education Manager will facilitate the educational system, ensuring a smooth approach. They will manage the trello, recommend educators and interns who deserve validation, and manage training. They will look to be approved by the coordinator and will work directly with coordination staff.</p>
+
+      <p><strong>Medical Educator</strong><br />
+      Medical Educators will have passed their Medical Education Internship and will focus on providing and creating training. Any training created will be approved before they are published. These staff will work with interns, introducing them to the world of medical education.</p>
+
+      <p><strong>Medical Educator Intern</strong><br />
+      These staff are currently learning their way around educating staff. They will work with certified educators, assisting them and learning the mechanics of teaching. They will work towards the Medical Educator role by completing training, approved by the Overseer and Coordinator.</p>
+    </section>
+
+    <section id="section5" tabindex="0">
+      <h2>🩺 Section 5: Weekly Task Quota</h2>
+      <p>In order to develop the very vast department of medical education, it is crucial that everyone in our team contributes. The following tasks listed will be our main focuses:</p>
+
+      <ul>
+        <li><strong>Task 1: Trivia Cards</strong><br />
+          Your assignment this week is to make 10 detailed trivia cards. They do not have to be a specific specialty, so you may choose that on your own. They must have 10 questions, and an answer guide for whoever chooses to use them. They may be used for trivia night, so make sure they are neat and presentable.</li>
+
+        <li><strong>Task 2: Research Projects</strong><br />
+          Members will be asked to do research on a topic that they desire and then create a guide about the topic along with a quiz and or guide. You can use Canva or Google Docs, and if you have any other website you would like to use, reach out to the Overseers!</li>
+
+        <li><strong>Task 3: Ethical Case Discussion</strong><br />
+          Members will be asked to get into groups of two. They will create a group name and be added into a ticket. One of the overseers will provide a realistic and real-life study. They will be asked to try and solve the case. This task develops critical thinking and ethical reasoning skills in a supportive environment. This will be a fun and competitive task against their peers. You and your partner will be expected to complete this in a timely manner, and to work together! If there is any issues with this feel free to contact me or Midnight, and it will be solved!</li>
+
+        <li><strong>Task 4: Advanced Research Methodology</strong><br />
+          Members will be asked to research on a topic/specialty that they are not familiar with and will be required to do qualitative research, biostatistics, and grant writing. The goal for this task is to equip members with the skills needed to conduct high-quality research and secure funding. You will each be assigned your topic, when you are assigned this task! Which means you are expected to ping either me or Midnight, to get assigned a research topic!</li>
+
+        <li><strong>Task 5: Advanced Case Study</strong><br />
+          Create realistic and detailed case studies on various medical conditions, incorporating real-world scenarios, patient histories, and treatment plans. If you need to use any resources, please list them in your document. If you need a format, feel free to ping me and I can provide one!</li>
+
+        <li><strong>Task 6: Detailed Staff Report</strong><br />
+          Staff reviews will be frequent. As you moderate the server, you will make an effort to write a report about a player. This report will include the date, the type of case, specialty, and an overall summary of their performance. This will be used to assess which players should be rewarded, and which players deserve demotion. This requires you to be in-game, in order to observe cases. It should be strictly medical wise, only. You can choose any case you would like, and then write your report on it.</li>
+
+        <li><strong>Task 7: Continuous Professional Development</strong><br />
+          Create a series of CPD courses for practicing clinicians, focusing on emerging medical knowledge, new treatment protocols, and ongoing skill development. This will ensure that healthcare providers stay current with the latest updates in medicine throughout their careers. CPD: Continuous professional development (CPD) is a process that helps professionals maintain and improve their skills, knowledge, and experience. It involves tracking and documenting what professionals learn and experience both formally and informally, and then applying that knowledge. CPD can help professionals feel more competent, advance their careers, etc.</li>
+      </ul>
+    </section>
+
+    <section id="section6" tabindex="0">
+      <h2>📘 Section 6: Monthly Task Quota</h2>
+      <p>A members monthly quota will consist of 1 training and 1 guide. It is required and it is the members’ responsibility to get their monthly quota done. The members will get reminders of their monthly quota. The monthly quota may vary.</p>
+    </section>
+
+    <section id="section7" tabindex="0">
+      <h2>⚕️ Section 7: Shifts & Activity</h2>
+      <p>Members of the Medical Education Department are highly encouraged to be active as much as possible. The rule of the monthly quota set by the ownership department continues to apply.</p>
+
+      <p>Failure to remain an active member and contributor of the ME department will result in a demotional warning that can lead to complete expulsion in the department. Weekly reviews and tasks are especially crucial and will reflect your activity. Those on leave of absence are exempt from this policy. I understand that everyone must be involved in a life beyond this department, therefore, if things get complicated, you are strongly urged to reach out to your overseer or ownership representative. We can work out a compromise that will not be used against you.</p>
+
+      <p>Shifts and activity will be analyzed by the Medical Education Coordinator. The activity section of this document will mainly cover the trainings given by this department. Our Medical Educator Interns are required to participate in the mandatory training, created and hosted by the Medical Educations Executive Council.</p>
+
+      <p>As part of the MEDU Department, you are expected to remain active in the MEDU Department. Failure to remain active can result in the usage of the 3 Department Strike Policy. A quota will regard the following:</p>
+      <ul>
+        <li>Hosting minimum of 2 trainings per week. (Every week resets)</li>
+        <li>Claim at least 1 ticket per week (Junior trainer)</li>
+      </ul>
+    </section>
+
+    <section id="section8" tabindex="0">
+      <h2>🩺 Section 8: Tutoring Support & Education</h2>
+      <p>As mentioned in the previous pages, we have multiple services that will serve as an educational support system for SWM staff. Any and all tutoring will need to be fact checked by credible and relevant sources. There is an understanding that majority, if not all, of us are not certified medical professionals. Therefore, we must best deal with the resources we have, but aim to remain a professional and factually accurate department.</p>
+
+      <p>Our major tutoring sources will include in-game trainings, discord ticket trainings, and optional one-on-one Q&A’s VIA a discord ticket system. We will also be utilizing and managing the medical notes channel/forum.</p>
+
+      <p>Trainings will need to be created and will be stored on the community trello, in order to eliminate confusions during trainings. This will enable easy copy and paste trainings.</p>
+    </section>
+
+    <section id="section9" tabindex="0">
+      <h2>📘 Section 9: Training blueprints and guide regulations</h2>
+      <p>↪ PTS (Permission to Speak) will remain active during trainings. Educators are required to answer any questions trainees have to their best ability. Failure of trainees to remain in PTS will result in a warning, and the second failure will result in a kick from the training.</p>
+      <p>↪ Trolling in a ticket is strictly prohibited. If you identify trolling inside of a training session, it will be an immediate kick from the training.</p>
+      <p>↪ Trainings will be consistently interactive. Following this rule, trainees must remain active during the session. Failure to remain active will result in an kick from the training. However, if a trainee notifies prior to inactivity, exceptions may be made.</p>
+
+      <p>Trainings are followed by a guide previously made. You may spectate an overseer or a peer to get more information on trainings and how they work.</p>
+
+      <p>If you have any questions about trainings, you may ask an overseer.</p>
+
+      <p>When hosting a training, you must follow this script (link below).<br />
+      &gt; Training Announcement Scripts &lt;</p>
+    </section>
+
+    <section id="section10" tabindex="0">
+      <h2>⚕️ Section 10: Ticket Etiquette and Rules</h2>
+      <p><strong>IMPORTANT:</strong> Please note that only Junior Educators and above can handle tickets. Failure to do so if you’re an intern will result in a warning or even a strike.</p>
+
+      <p>Regarding to tickets, there's a certain amount of tutoring we provide, this includes:</p>
+
+      <ul>
+        <li>Short-Term Tutoring, tutees will be tutored in the briefing of a topic of tutees choice. This may include a small ticket training with a short quiz at the end or a text with the briefing of information and an assignment.</li>
+        <li>Board Exams Tutoring, assistance with specific / general question/s enclosing the Board Examinations for Y5 Medical Staff.</li>
+        <li>Q & A Session, a Teachable time to ask questions. Allow tutee to ask any medical questions / concerns! After the Questions are asked, make sure the person gets a long & detailed answer.</li>
+        <li>Medical Notes / Assistance, you read tutees notes and provide them with tips to take long, detailed and efficient notes.</li>
+        <li>Resources and Guides, you provide tutees with accurate, detailed and reliable sources on a topic of their choice.</li>
+        <li>Long-Term Tutoring, let tutees get tutored about a topic / speciality of their choice.</li>
+      </ul>
+
+      <p>Please make sure you allow the staff member requesting the ticket to get all 6 choices of tutoring services we provide so they can pick their preferred way of being taught a speciality of their choice.</p>
+
+      <p>For more information, please click the link below.<br />
+      &gt; Medical Education Tutoring Guides &lt;<br />
+      &gt; Education Plan Script &lt;</p>
+    </section>
+
+    <section id="section11" tabindex="0">
+      <h2>🩺 Section 11: Medical Education Internship</h2>
+      <p>In order to advance from a Medical Educator Intern → Medical Educator, you must complete your MEDU internship. The internship has 2 components. The first section will be a mandatory training. This training will cover the following:</p>
+
+      <ul>
+        <li>Any information in the handbook</li>
+        <li>Training manners and professionalism</li>
+        <li>How to find reliable sources (I will also offer some great resources!)</li>
+        <li>Common FAQs!</li>
+      </ul>
+
+      <p>The second part of the internship will be the final task. This final task may be submitted after your training. The final task will be to create TWO training guides/lectures on a topic of your choice. Some common examples include: IV set-up, arterial lines, bedside manner, or a procedure/disease of your choice.</p>
+
+      <p>Passing both the training and the final task will allow you to further get promoted. Failure to complete these trainings will prohibit you from getting promoted within the MEDU department.</p>
+
+      <h3>What happens if I fail my training/final task?</h3>
+      <p>Failure of the first training will require you to wait 5 days before re-doing this process. During these 5 days, it is highly recommended to review your failed work and see what you could do differently. Failure of this process the second time will result in demotion/expulsion from the department.</p>
+
+      <div class="callout">
+        <strong>Reminder to all Medical Education Members:</strong><br />
+        You all are in a trial mode, which means you are constantly being tested and must demonstrate to me that you are an ideal and exemplary person to work in the Medical Education Department effectively and efficiently. With this clarification, I wish you all the best development for your new job in this department, and I trust that you will do a good job.<br /><br />
+        Warm regards,<br />
+        Luna.C.Everly
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  This handbook was built for the MEDU Department | SWM Network
+</footer>
 </body>
 </html>
